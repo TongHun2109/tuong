@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASM_gd2</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 100px;
+    margin: 0;  /* Loại bỏ khoảng cách mặc định */
+    height: 100vh; /* Đảm bảo chiều cao của body luôn chiếm 100% chiều cao của cửa sổ */
+    /* Chèn ảnh nền từ đường dẫn trên máy tính */
+    background-image: url('ab.jpg');  /* Đường dẫn tới ảnh */
+    background-size: cover; /* Điều chỉnh ảnh nền phủ toàn bộ màn hình */
+    background-position: center; /* Căn giữa ảnh nền */
+    background-repeat: no-repeat; /* Không lặp lại ảnh nền */
+}
+        .form-container {
+            position: absolute;
+            background-color: pink;
+            padding: 50px;
+            border: 1px solid black;
+            display: none;
+            border-radius: 20px; /* Góc bo tròn */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tạo bóng mờ cho form */
+        }
+        #message {
+            font-size: 30px;
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+            font-family: 'Comic Sans MS', cursive, sans-serif;  /* Thay đổi phông chữ cho dòng chữ */
+            margin-top: 5cm; 
+            font-family: 'Comic Sans MS', cursive, sans-serif;  /* Thay đổi phông chữ cho dòng chữ */
+        }
+        .form-container {
+            font-family: 'Comic Sans MS', cursive, sans-serif;  /* Thay đổi phông chữ cho form */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dòng chữ để người dùng nhấn vào -->
+    <div id="message" onclick="openForms()">Anh có điều muốn nói</div>
+
+    <script>
+        // Hàm sẽ tạo form khi người dùng nhấn vào "Anh có điều muốn nói"
+        function openForms() {
+            // Tạo 50 form với nội dung "Tràn ngập bộ nhớ"
+            for (let i = 0; i < 500; i++) {
+                // Mỗi form sẽ xuất hiện sau 100ms
+                setTimeout(function() {
+                    createForm(i);
+                }, i * 100);  // Khoảng thời gian giữa các form là 100ms
+            }
+        }
+
+        // Hàm tạo form với nội dung và vị trí ngẫu nhiên
+        function createForm(index) {
+            let form = document.createElement('div');
+            form.classList.add('form-container');
+            form.innerText = "❤️ !! Anh Nhớ Em !! ❤️ " ;
+
+            // Vị trí ngẫu nhiên trên màn hình
+            form.style.top = Math.random() * window.innerHeight + "px";
+            form.style.left = Math.random() * window.innerWidth + "px";
+
+            // Hiển thị form
+            document.body.appendChild(form);
+            form.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
